@@ -1,0 +1,845 @@
+classdef Ziyaev_Abdullojon_EE101_TeamProject2 < matlab.apps.AppBase
+
+    % Properties that correspond to app components
+    properties (Access = public)
+        UIFigure                      matlab.ui.Figure
+        SaveoperationtohistoryButton  matlab.ui.control.Button
+        HistoryEditField              matlab.ui.control.EditField
+        Label_problem                 matlab.ui.control.EditField
+        History                       matlab.ui.control.Button
+        Label_result                  matlab.ui.control.EditField
+        Division                      matlab.ui.control.Button
+        Multiplication                matlab.ui.control.Button
+        Minus                         matlab.ui.control.Button
+        Plus                          matlab.ui.control.Button
+        Clear                         matlab.ui.control.Button
+        Ans                           matlab.ui.control.Button
+        Exp                           matlab.ui.control.Button
+        Power                         matlab.ui.control.Button
+        Digit_0                       matlab.ui.control.Button
+        Dot                           matlab.ui.control.Button
+        Equal                         matlab.ui.control.Button
+        Digit_3                       matlab.ui.control.Button
+        Digit_6                       matlab.ui.control.Button
+        Digit_2                       matlab.ui.control.Button
+        Digit_5                       matlab.ui.control.Button
+        Digit_1                       matlab.ui.control.Button
+        Digit_4                       matlab.ui.control.Button
+        Sqrt                          matlab.ui.control.Button
+        Log                           matlab.ui.control.Button
+        Tan                           matlab.ui.control.Button
+        Cos                           matlab.ui.control.Button
+        Digit_E                       matlab.ui.control.Button
+        Digit_pi                      matlab.ui.control.Button
+        Digit_9                       matlab.ui.control.Button
+        Digit_8                       matlab.ui.control.Button
+        Digit_7                       matlab.ui.control.Button
+        Ln                            matlab.ui.control.Button
+        Sin                           matlab.ui.control.Button
+        Inverse                       matlab.ui.control.Button
+        Persentage                    matlab.ui.control.Button
+        Right_Bracket                 matlab.ui.control.Button
+        Left_Bracket                  matlab.ui.control.Button
+        Factorial                     matlab.ui.control.Button
+        Deg                           matlab.ui.control.Button
+        Rad                           matlab.ui.control.Button
+    end
+
+    
+    properties (Access = private)
+        dotNumber;
+        enableDot = 0;
+        integerNumber = 0;
+        num1;
+        num2;
+        sign;
+        enableRad = 0;
+        problem_label;
+        history;
+        history_index = 0;
+    end
+        
+
+    % Callbacks that handle component events
+    methods (Access = private)
+
+        % Button pushed function: Digit_1
+        function Digit_1ButtonPushed(app, event)
+            result = '0';
+            if app.enableDot == 1 %we add . number
+                app.dotNumber = [app.dotNumber '1'];
+                result = [num2str(app.integerNumber) '.' app.dotNumber];
+            else % normal number
+                result = [app.Label_result.Value '1'];
+            end
+            newResult = str2num(result);%converting to int to prevent 0 at the start
+            app.Label_result.Value = num2str(newResult);
+            app.Label_problem.Value = num2str(newResult);
+        end
+
+        % Button pushed function: Digit_0
+        function Digit_0ButtonPushed(app, event)
+            result = '0';
+            if app.enableDot == 1 %we add . number
+                app.dotNumber = [app.dotNumber '0'];
+                result = [num2str(app.integerNumber) '.' app.dotNumber];
+            else % normal number
+                result = [app.Label_result.Value '0'];
+            end
+            newResult = str2num(result);%converting to int to prevent 0 at the start
+            app.Label_result.Value = num2str(newResult);
+        end
+
+        % Button pushed function: Digit_3
+        function Digit_3ButtonPushed(app, event)
+            result = '0';
+            if app.enableDot == 1 %we add . number
+                app.dotNumber = [app.dotNumber '3'];
+                result = [num2str(app.integerNumber) '.' app.dotNumber];
+            else % normal number
+                result = [app.Label_result.Value '3'];
+            end
+            newResult = str2num(result);%converting to int to prevent 0 at the start
+            app.Label_result.Value = num2str(newResult);
+            app.Label_problem.Value = num2str(newResult);
+        end
+
+        % Button pushed function: Digit_6
+        function Digit_6ButtonPushed(app, event)
+            result = '0';
+            if app.enableDot == 1 %we add . number
+                app.dotNumber = [app.dotNumber '6'];
+                result = [num2str(app.integerNumber) '.' app.dotNumber];
+            else % normal number
+                result = [app.Label_result.Value '6'];
+            end
+            newResult = str2num(result);%converting to int to prevent 0 at the start
+            app.Label_result.Value = num2str(newResult);
+            app.Label_problem.Value = num2str(newResult);
+        end
+
+        % Button pushed function: Digit_2
+        function Digit_2ButtonPushed(app, event)
+            result = '0';
+            if app.enableDot == 1 %we add . number
+                app.dotNumber = [app.dotNumber '2'];
+                result = [num2str(app.integerNumber) '.' app.dotNumber];
+            else % normal number
+                result = [app.Label_result.Value '2'];
+            end
+            newResult = str2num(result);%converting to int to prevent 0 at the start
+            app.Label_result.Value = num2str(newResult);
+            app.Label_problem.Value = num2str(newResult);
+        end
+
+        % Button pushed function: Digit_5
+        function Digit_5ButtonPushed(app, event)
+            result = '0';
+            if app.enableDot == 1 %we add . number
+                app.dotNumber = [app.dotNumber '5'];
+                result = [num2str(app.integerNumber) '.' app.dotNumber];
+            else % normal number
+                result = [app.Label_result.Value '5'];
+            end
+            newResult = str2num(result);%converting to int to prevent 0 at the start
+            app.Label_result.Value = num2str(newResult);
+            app.Label_problem.Value = num2str(newResult);
+        end
+
+        % Button pushed function: Digit_4
+        function Digit_4ButtonPushed(app, event)
+            result = '0';
+            if app.enableDot == 1 %we add . number
+                app.dotNumber = [app.dotNumber '4'];
+                result = [num2str(app.integerNumber) '.' app.dotNumber];
+            else % normal number
+                result = [app.Label_result.Value '4'];
+            end
+            newResult = str2num(result);%converting to int to prevent 0 at the start
+            app.Label_result.Value = num2str(newResult);
+            app.Label_problem.Value = num2str(newResult);
+        end
+
+        % Button pushed function: Digit_7
+        function Digit_7ButtonPushed(app, event)
+            result = '0';
+            if app.enableDot == 1 %we add . number
+                app.dotNumber = [app.dotNumber '7'];
+                result = [num2str(app.integerNumber) '.' app.dotNumber];
+            else % normal number
+                result = [app.Label_result.Value '7'];
+            end
+            newResult = str2num(result);%converting to int to prevent 0 at the start
+            app.Label_result.Value = num2str(newResult);
+            app.Label_problem.Value = num2str(newResult);
+        end
+
+        % Button pushed function: Digit_8
+        function Digit_8ButtonPushed(app, event)
+           result = '0';
+            if app.enableDot == 1 %we add . number
+                app.dotNumber = [app.dotNumber '8'];
+                result = [num2str(app.integerNumber) '.' app.dotNumber];
+            else % normal number
+                result = [app.Label_result.Value '8'];
+            end
+            newResult = str2num(result);%converting to int to prevent 0 at the start
+            app.Label_result.Value = num2str(newResult);
+            app.Label_problem.Value = num2str(newResult);
+        end
+
+        % Button pushed function: Digit_9
+        function Digit_9ButtonPushed(app, event)
+           result = '0';
+            if app.enableDot == 1 %we add . number
+                app.dotNumber = [app.dotNumber '9'];
+                result = [num2str(app.integerNumber) '.' app.dotNumber];
+            else % normal number
+                result = [app.Label_result.Value '9'];
+            end
+            newResult = str2num(result);%converting to int to prevent 0 at the start
+            app.Label_result.Value = num2str(newResult);
+            app.Label_problem.Value = num2str(newResult);
+        end
+
+        % Button pushed function: Dot
+        function DotButtonPushed(app, event)
+            app.enableDot = 1; %enabling dot
+            app.integerNumber = str2num(app.Label_result.Value); %saving integer part of number
+        end
+
+        % Button pushed function: Clear
+        function ClearButtonPushed(app, event)
+            app.Label_result.Value = '0';
+            app.Label_problem.Value = '';
+            app.integerNumber = 0; %integer part of number 0
+            app.dotNumber = ''; %float part of number 0
+            app.enableDot = 0; %disable dot
+        end
+
+        % Button pushed function: Plus
+        function PlusButtonPushed(app, event)
+            app.sign = '+';
+            if app.Label_result.Value == 'e'
+                app.num1 = exp(1);
+            elseif app.Label_result.Value == 'π'
+                app.num1 = pi;
+            else
+                app.num1 = str2double(app.Label_result.Value);
+            end
+            app.Label_result.Value = '0';
+            app.problem_label = [num2str(app.num1) app.sign];
+            app.Label_problem.Value = app.problem_label; 
+            app.integerNumber = 0; %integer part of number 0
+            app.dotNumber = ''; %float part of number 0
+            app.enableDot = 0; %disable dot
+        end
+
+        % Button pushed function: Minus
+        function MinusButtonPushed(app, event)
+            app.sign = '-';
+            if app.Label_result.Value == 'e'
+                app.num1 = exp(1);
+            elseif app.Label_result.Value == 'π'
+                app.num1 = pi;
+            else
+                app.num1 = str2double(app.Label_result.Value);
+            end
+            app.Label_result.Value = '0';
+            app.integerNumber = 0; %integer part of number 0
+            app.dotNumber = ''; %float part of number 0
+            app.enableDot = 0; %disable dot
+        end
+
+        % Button pushed function: Multiplication
+        function MultiplicationButtonPushed(app, event)
+            app.sign = '*';
+            if app.Label_result.Value == 'e'
+                app.num1 = exp(1);
+            elseif app.Label_result.Value == 'π'
+                app.num1 = pi;
+            else
+                app.num1 = str2double(app.Label_result.Value);
+            end
+            app.Label_result.Value = '0';
+            app.integerNumber = 0; %integer part of number 0
+            app.dotNumber = ''; %float part of number 0
+            app.enableDot = 0; %disable dot
+        end
+
+        % Button pushed function: Division
+        function DivisionButtonPushed(app, event)
+            app.sign = '/';
+           if app.Label_result.Value == 'e'
+                app.num1 = exp(1);
+            elseif app.Label_result.Value == 'π'
+                app.num1 = pi;
+            else
+                app.num1 = str2double(app.Label_result.Value);
+            end
+            app.Label_result.Value = '0';
+            app.integerNumber = 0; %integer part of number 0
+            app.dotNumber = ''; %float part of number 0
+            app.enableDot = 0; %disable dot
+        end
+
+        % Button pushed function: Equal
+        function EqualButtonPushed(app, event)
+            if app.Label_result.Value == 'e'
+                app.num2 = exp(1);
+            elseif app.Label_result.Value == 'π'
+                app.num2 = pi;
+            else
+                app.num2 = str2double(app.Label_result.Value);
+            end
+            if app.sign == '+'
+                app.Label_result.Value = num2str(app.num1+app.num2);
+            elseif app.sign == '-'
+                    app.Label_result.Value = num2str(app.num1-app.num2);
+            elseif app.sign == '*'            
+                    app.Label_result.Value = num2str(app.num1*app.num2);
+            elseif app.sign == '/'            
+                    app.Label_result.Value = num2str(app.num1/app.num2);
+            elseif app.sign == '^'
+                app.Label_result.Value = num2str(power(app.num1,app.num2));
+            else
+                app.sign ='';
+                app.Label_result.Value = app.Label_result.Value;
+            end
+            app.problem_label = [num2str(app.num1) app.sign num2str(app.num2)];
+            app.Label_problem.Value = app.problem_label;
+            str = [app.problem_label ' = ' app.Label_result.Value];
+            app.history = str;
+        end
+
+        % Button pushed function: Power
+        function PowerButtonPushed(app, event)
+            app.sign = '^';
+            if app.Label_result.Value == 'e'
+                app.num1 = exp(1);
+            elseif app.Label_result.Value == 'π'
+                app.num1 = pi;
+            else
+                app.num1 = str2double(app.Label_result.Value);
+            end
+            app.Label_result.Value = '0';
+            app.integerNumber = 0; %integer part of number 0
+            app.dotNumber = ''; %float part of number 0
+            app.enableDot = 0; %disable dot
+        end
+
+        % Button pushed function: Sqrt
+        function SqrtButtonPushed(app, event)
+            app.sign = 'p';
+            app.num1 = str2double(app.Label_result.Value);
+            result = sqrt(app.num1);
+            app.Label_result.Value = num2str(result);
+            app.problem_label = ['√' num2str(app.num1)];
+            app.Label_problem.Value = app.problem_label;
+            str = [app.problem_label ' = ' app.Label_result.Value];
+            app.history = str;
+        end
+
+        % Button pushed function: Factorial
+        function FactorialButtonPushed(app, event)
+            app.sign = 'p';
+            app.num1 = str2double(app.Label_result.Value);
+            result = 1;
+            for i = 1:app.num1
+                result = result*i;
+            end
+            app.Label_result.Value = num2str(result);
+            app.problem_label = [num2str(app.num1) '!'];
+            app.Label_problem.Value = app.problem_label;
+            str = [app.problem_label ' = ' app.Label_result.Value];
+            app.history = str;
+        end
+
+        % Button pushed function: Ln
+        function LnButtonPushed(app, event)
+            app.sign = 'p';
+            if app.Label_result.Value == 'e'
+                app.num1 = exp(1);
+            elseif app.Label_result.Value == 'π'
+                app.num1 = pi;
+            else
+                app.num1 = str2double(app.Label_result.Value);
+            end
+            result = log(app.num1);
+            app.Label_result.Value = num2str(result);
+             app.problem_label = ['Ln(' num2str(app.num1) ')'];
+            app.Label_problem.Value = app.problem_label;
+            str = [app.problem_label ' = ' app.Label_result.Value];
+            app.history = str;
+        end
+
+        % Button pushed function: Digit_E
+        function Digit_EButtonPushed(app, event)
+            app.Label_result.Value = 'e';
+        end
+
+        % Button pushed function: Digit_pi
+        function Digit_piButtonPushed(app, event)
+            app.Label_result.Value = 'π';
+        end
+
+        % Button pushed function: Rad
+        function RadButtonPushed(app, event)
+            app.enableRad = 1;
+            app.Rad.BackgroundColor = [0 1 1];
+            app.Deg.BackgroundColor = [1 1 1];
+        end
+
+        % Button pushed function: Deg
+        function DegButtonPushed(app, event)
+            app.enableRad = 0;
+            app.Deg.BackgroundColor = [0 1 1];
+            app.Rad.BackgroundColor = [1 1 1];
+        end
+
+        % Button pushed function: Log
+        function LogButtonPushed(app, event)
+            app.sign = 'p';
+            if app.Label_result.Value == 'e'
+                app.num1 = exp(1);
+            elseif app.Label_result.Value == 'π'
+                app.num1 = pi;
+            else
+                app.num1 = str2double(app.Label_result.Value);
+            end
+            result = log10(app.num1);
+            app.Label_result.Value = num2str(result);
+             app.problem_label = ['log(' num2str(app.num1) ')'];
+            app.Label_problem.Value = app.problem_label;
+            str = [app.problem_label ' = ' app.Label_result.Value];
+            app.history = str;
+        end
+
+        % Button pushed function: Persentage
+        function PersentageButtonPushed(app, event)
+            app.sign = 'p';
+            if app.Label_result.Value == 'e'
+                app.num1 = exp(1);
+            elseif app.Label_result.Value == 'π'
+                app.num1 = pi;
+            else
+                app.num1 = str2double(app.Label_result.Value);
+            end
+            result = app.num1/100;
+            app.Label_result.Value = num2str(result);
+             app.problem_label = [num2str(app.num1) '%'];
+            app.Label_problem.Value = app.problem_label;
+            str = [app.problem_label ' = ' app.Label_result.Value];
+            app.history = str;
+        end
+
+        % Button pushed function: Inverse
+        function InverseButtonPushed(app, event)
+            msgbox('This function is not available now')
+        end
+
+        % Button pushed function: Sin
+        function SinButtonPushed(app, event)
+            app.sign = 'p';
+            if app.Label_result.Value == 'e'
+                app.num1 = exp(1);
+            elseif app.Label_result.Value == 'π'
+                app.num1 = pi;
+            else
+                app.num1 = str2double(app.Label_result.Value);
+            end
+            if app.enableRad == 1
+                result = sin(app.num1);
+            else
+                result = sin(deg2rad(app.num1));
+            end
+            app.Label_result.Value = num2str(result);
+             app.problem_label = ['sin(' num2str(app.num1) ')'];
+            app.Label_problem.Value = app.problem_label;
+            str = [app.problem_label ' = ' app.Label_result.Value];
+            app.history = str;
+        end
+
+        % Button pushed function: Cos
+        function CosButtonPushed(app, event)
+            app.sign = 'p';
+            if app.Label_result.Value == 'e'
+                app.num1 = exp(1);
+            elseif app.Label_result.Value == 'π'
+                app.num1 = pi;
+            else
+                app.num1 = str2double(app.Label_result.Value);
+            end
+            if app.enableRad == 1
+                result = cos(app.num1);
+            else
+                result = cos(deg2rad(app.num1));
+            end
+            app.Label_result.Value = num2str(result);
+             app.problem_label = ['cos(' num2str(app.num1) ')'];
+            app.Label_problem.Value = app.problem_label;
+            str = [app.problem_label ' = ' app.Label_result.Value];
+            app.history = str;
+        end
+
+        % Button pushed function: Tan
+        function TanButtonPushed(app, event)
+            app.sign = 'p';
+            if app.Label_result.Value == 'e'
+                app.num1 = exp(1);
+            elseif app.Label_result.Value == 'π'
+                app.num1 = pi;
+            else
+                app.num1 = str2double(app.Label_result.Value);
+            end
+            if app.enableRad == 1
+                result = sin(app.num1)/cos(app.num1);
+            else
+                result = sin(deg2rad(app.num1))/cos(deg2rad(app.num1));
+            end
+            app.Label_result.Value = num2str(result);
+             app.problem_label = ['tan(' num2str(app.num1) ')'];
+            app.Label_problem.Value = app.problem_label;
+            str = [app.problem_label ' = ' app.Label_result.Value];
+            app.history = str;
+        end
+
+        % Button pushed function: History
+        function HistoryButtonPushed(app, event)
+           app.HistoryEditField.Enable = "on";
+           app.HistoryEditField.Editable = "on";
+           str1 = app.HistoryEditField.Value;
+           str2 = app.history;
+           result= [str1 newline str2];
+           msgbox(result,'History');
+           app.HistoryEditField.Value = result;
+        end
+
+        % Button pushed function: SaveoperationtohistoryButton
+        function SaveoperationtohistoryButtonPushed(app, event)
+            app.HistoryEditField.Enable = "on";
+           app.HistoryEditField.Editable = "on";
+           str1 = app.HistoryEditField.Value;
+           str2 = app.history;
+           result= [str1 newline str2];
+           app.HistoryEditField.Value = result;
+        end
+    end
+
+    % Component initialization
+    methods (Access = private)
+
+        % Create UIFigure and components
+        function createComponents(app)
+
+            % Create UIFigure and hide until all components are created
+            app.UIFigure = uifigure('Visible', 'off');
+            app.UIFigure.Position = [100 100 749 429];
+            app.UIFigure.Name = 'MATLAB App';
+
+            % Create Rad
+            app.Rad = uibutton(app.UIFigure, 'push');
+            app.Rad.ButtonPushedFcn = createCallbackFcn(app, @RadButtonPushed, true);
+            app.Rad.BackgroundColor = [1 1 1];
+            app.Rad.FontSize = 24;
+            app.Rad.Position = [11 222 95 40];
+            app.Rad.Text = 'Rad';
+
+            % Create Deg
+            app.Deg = uibutton(app.UIFigure, 'push');
+            app.Deg.ButtonPushedFcn = createCallbackFcn(app, @DegButtonPushed, true);
+            app.Deg.BackgroundColor = [0 1 1];
+            app.Deg.FontSize = 24;
+            app.Deg.Position = [115 222 95 40];
+            app.Deg.Text = 'Deg';
+
+            % Create Factorial
+            app.Factorial = uibutton(app.UIFigure, 'push');
+            app.Factorial.ButtonPushedFcn = createCallbackFcn(app, @FactorialButtonPushed, true);
+            app.Factorial.FontSize = 24;
+            app.Factorial.Position = [219 222 95 40];
+            app.Factorial.Text = 'x!';
+
+            % Create Left_Bracket
+            app.Left_Bracket = uibutton(app.UIFigure, 'push');
+            app.Left_Bracket.FontSize = 24;
+            app.Left_Bracket.Position = [323 222 95 40];
+            app.Left_Bracket.Text = '(';
+
+            % Create Right_Bracket
+            app.Right_Bracket = uibutton(app.UIFigure, 'push');
+            app.Right_Bracket.FontSize = 24;
+            app.Right_Bracket.Position = [427 222 95 40];
+            app.Right_Bracket.Text = ')';
+
+            % Create Persentage
+            app.Persentage = uibutton(app.UIFigure, 'push');
+            app.Persentage.ButtonPushedFcn = createCallbackFcn(app, @PersentageButtonPushed, true);
+            app.Persentage.FontSize = 24;
+            app.Persentage.Position = [531 222 95 40];
+            app.Persentage.Text = '%';
+
+            % Create Inverse
+            app.Inverse = uibutton(app.UIFigure, 'push');
+            app.Inverse.ButtonPushedFcn = createCallbackFcn(app, @InverseButtonPushed, true);
+            app.Inverse.FontSize = 24;
+            app.Inverse.Position = [11 173 95 40];
+            app.Inverse.Text = 'Inv';
+
+            % Create Sin
+            app.Sin = uibutton(app.UIFigure, 'push');
+            app.Sin.ButtonPushedFcn = createCallbackFcn(app, @SinButtonPushed, true);
+            app.Sin.FontSize = 24;
+            app.Sin.Position = [115 170 95 40];
+            app.Sin.Text = 'sin';
+
+            % Create Ln
+            app.Ln = uibutton(app.UIFigure, 'push');
+            app.Ln.ButtonPushedFcn = createCallbackFcn(app, @LnButtonPushed, true);
+            app.Ln.FontSize = 24;
+            app.Ln.Position = [219 170 95 40];
+            app.Ln.Text = 'Ln';
+
+            % Create Digit_7
+            app.Digit_7 = uibutton(app.UIFigure, 'push');
+            app.Digit_7.ButtonPushedFcn = createCallbackFcn(app, @Digit_7ButtonPushed, true);
+            app.Digit_7.FontSize = 24;
+            app.Digit_7.Position = [323 170 95 40];
+            app.Digit_7.Text = '7';
+
+            % Create Digit_8
+            app.Digit_8 = uibutton(app.UIFigure, 'push');
+            app.Digit_8.ButtonPushedFcn = createCallbackFcn(app, @Digit_8ButtonPushed, true);
+            app.Digit_8.FontSize = 24;
+            app.Digit_8.Position = [427 170 95 40];
+            app.Digit_8.Text = '8';
+
+            % Create Digit_9
+            app.Digit_9 = uibutton(app.UIFigure, 'push');
+            app.Digit_9.ButtonPushedFcn = createCallbackFcn(app, @Digit_9ButtonPushed, true);
+            app.Digit_9.FontSize = 24;
+            app.Digit_9.Position = [531 170 95 40];
+            app.Digit_9.Text = '9';
+
+            % Create Digit_pi
+            app.Digit_pi = uibutton(app.UIFigure, 'push');
+            app.Digit_pi.ButtonPushedFcn = createCallbackFcn(app, @Digit_piButtonPushed, true);
+            app.Digit_pi.FontSize = 24;
+            app.Digit_pi.Position = [11 117 95 40];
+            app.Digit_pi.Text = 'π';
+
+            % Create Digit_E
+            app.Digit_E = uibutton(app.UIFigure, 'push');
+            app.Digit_E.ButtonPushedFcn = createCallbackFcn(app, @Digit_EButtonPushed, true);
+            app.Digit_E.FontSize = 24;
+            app.Digit_E.Position = [11 65 95 40];
+            app.Digit_E.Text = 'e';
+
+            % Create Cos
+            app.Cos = uibutton(app.UIFigure, 'push');
+            app.Cos.ButtonPushedFcn = createCallbackFcn(app, @CosButtonPushed, true);
+            app.Cos.FontSize = 24;
+            app.Cos.Position = [115 117 95 40];
+            app.Cos.Text = 'cos';
+
+            % Create Tan
+            app.Tan = uibutton(app.UIFigure, 'push');
+            app.Tan.ButtonPushedFcn = createCallbackFcn(app, @TanButtonPushed, true);
+            app.Tan.FontSize = 24;
+            app.Tan.Position = [115 65 95 40];
+            app.Tan.Text = 'tan';
+
+            % Create Log
+            app.Log = uibutton(app.UIFigure, 'push');
+            app.Log.ButtonPushedFcn = createCallbackFcn(app, @LogButtonPushed, true);
+            app.Log.FontSize = 24;
+            app.Log.Position = [219 117 95 40];
+            app.Log.Text = 'log';
+
+            % Create Sqrt
+            app.Sqrt = uibutton(app.UIFigure, 'push');
+            app.Sqrt.ButtonPushedFcn = createCallbackFcn(app, @SqrtButtonPushed, true);
+            app.Sqrt.FontSize = 24;
+            app.Sqrt.Position = [219 65 95 40];
+            app.Sqrt.Text = '√';
+
+            % Create Digit_4
+            app.Digit_4 = uibutton(app.UIFigure, 'push');
+            app.Digit_4.ButtonPushedFcn = createCallbackFcn(app, @Digit_4ButtonPushed, true);
+            app.Digit_4.FontSize = 24;
+            app.Digit_4.Position = [323 117 95 40];
+            app.Digit_4.Text = '4';
+
+            % Create Digit_1
+            app.Digit_1 = uibutton(app.UIFigure, 'push');
+            app.Digit_1.ButtonPushedFcn = createCallbackFcn(app, @Digit_1ButtonPushed, true);
+            app.Digit_1.FontSize = 24;
+            app.Digit_1.Position = [323 65 95 40];
+            app.Digit_1.Text = '1';
+
+            % Create Digit_5
+            app.Digit_5 = uibutton(app.UIFigure, 'push');
+            app.Digit_5.ButtonPushedFcn = createCallbackFcn(app, @Digit_5ButtonPushed, true);
+            app.Digit_5.FontSize = 24;
+            app.Digit_5.Position = [427 117 95 40];
+            app.Digit_5.Text = '5';
+
+            % Create Digit_2
+            app.Digit_2 = uibutton(app.UIFigure, 'push');
+            app.Digit_2.ButtonPushedFcn = createCallbackFcn(app, @Digit_2ButtonPushed, true);
+            app.Digit_2.FontSize = 24;
+            app.Digit_2.Position = [427 65 95 40];
+            app.Digit_2.Text = '2';
+
+            % Create Digit_6
+            app.Digit_6 = uibutton(app.UIFigure, 'push');
+            app.Digit_6.ButtonPushedFcn = createCallbackFcn(app, @Digit_6ButtonPushed, true);
+            app.Digit_6.FontSize = 24;
+            app.Digit_6.Position = [531 117 95 40];
+            app.Digit_6.Text = '6';
+
+            % Create Digit_3
+            app.Digit_3 = uibutton(app.UIFigure, 'push');
+            app.Digit_3.ButtonPushedFcn = createCallbackFcn(app, @Digit_3ButtonPushed, true);
+            app.Digit_3.FontSize = 24;
+            app.Digit_3.Position = [531 65 95 40];
+            app.Digit_3.Text = '3';
+
+            % Create Equal
+            app.Equal = uibutton(app.UIFigure, 'push');
+            app.Equal.ButtonPushedFcn = createCallbackFcn(app, @EqualButtonPushed, true);
+            app.Equal.FontSize = 24;
+            app.Equal.Position = [531 16 95 40];
+            app.Equal.Text = '=';
+
+            % Create Dot
+            app.Dot = uibutton(app.UIFigure, 'push');
+            app.Dot.ButtonPushedFcn = createCallbackFcn(app, @DotButtonPushed, true);
+            app.Dot.FontSize = 24;
+            app.Dot.Position = [427 16 95 40];
+            app.Dot.Text = '.';
+
+            % Create Digit_0
+            app.Digit_0 = uibutton(app.UIFigure, 'push');
+            app.Digit_0.ButtonPushedFcn = createCallbackFcn(app, @Digit_0ButtonPushed, true);
+            app.Digit_0.FontSize = 24;
+            app.Digit_0.Position = [323 16 95 40];
+            app.Digit_0.Text = '0';
+
+            % Create Power
+            app.Power = uibutton(app.UIFigure, 'push');
+            app.Power.ButtonPushedFcn = createCallbackFcn(app, @PowerButtonPushed, true);
+            app.Power.FontSize = 24;
+            app.Power.Position = [219 16 95 40];
+            app.Power.Text = 'x^y';
+
+            % Create Exp
+            app.Exp = uibutton(app.UIFigure, 'push');
+            app.Exp.FontSize = 24;
+            app.Exp.Position = [115 16 95 40];
+            app.Exp.Text = 'EXP';
+
+            % Create Ans
+            app.Ans = uibutton(app.UIFigure, 'push');
+            app.Ans.FontSize = 24;
+            app.Ans.Position = [11 16 95 40];
+            app.Ans.Text = 'Ans';
+
+            % Create Clear
+            app.Clear = uibutton(app.UIFigure, 'push');
+            app.Clear.ButtonPushedFcn = createCallbackFcn(app, @ClearButtonPushed, true);
+            app.Clear.FontSize = 24;
+            app.Clear.Position = [644 222 95 40];
+            app.Clear.Text = 'AC';
+
+            % Create Plus
+            app.Plus = uibutton(app.UIFigure, 'push');
+            app.Plus.ButtonPushedFcn = createCallbackFcn(app, @PlusButtonPushed, true);
+            app.Plus.FontSize = 24;
+            app.Plus.Position = [644 170 95 40];
+            app.Plus.Text = '+';
+
+            % Create Minus
+            app.Minus = uibutton(app.UIFigure, 'push');
+            app.Minus.ButtonPushedFcn = createCallbackFcn(app, @MinusButtonPushed, true);
+            app.Minus.FontSize = 24;
+            app.Minus.Position = [644 117 95 40];
+            app.Minus.Text = '-';
+
+            % Create Multiplication
+            app.Multiplication = uibutton(app.UIFigure, 'push');
+            app.Multiplication.ButtonPushedFcn = createCallbackFcn(app, @MultiplicationButtonPushed, true);
+            app.Multiplication.FontSize = 24;
+            app.Multiplication.Position = [644 65 95 40];
+            app.Multiplication.Text = 'X';
+
+            % Create Division
+            app.Division = uibutton(app.UIFigure, 'push');
+            app.Division.ButtonPushedFcn = createCallbackFcn(app, @DivisionButtonPushed, true);
+            app.Division.FontSize = 24;
+            app.Division.Position = [644 16 95 40];
+            app.Division.Text = '/';
+
+            % Create Label_result
+            app.Label_result = uieditfield(app.UIFigure, 'text');
+            app.Label_result.HorizontalAlignment = 'right';
+            app.Label_result.FontSize = 24;
+            app.Label_result.FontWeight = 'bold';
+            app.Label_result.Position = [11 270 728 125];
+            app.Label_result.Value = '0';
+
+            % Create History
+            app.History = uibutton(app.UIFigure, 'push');
+            app.History.ButtonPushedFcn = createCallbackFcn(app, @HistoryButtonPushed, true);
+            app.History.FontSize = 18;
+            app.History.Position = [12 398 104 30];
+            app.History.Text = 'History';
+
+            % Create Label_problem
+            app.Label_problem = uieditfield(app.UIFigure, 'text');
+            app.Label_problem.Position = [478 360 249 27];
+
+            % Create HistoryEditField
+            app.HistoryEditField = uieditfield(app.UIFigure, 'text');
+            app.HistoryEditField.Editable = 'off';
+            app.HistoryEditField.Enable = 'off';
+            app.HistoryEditField.Visible = 'off';
+            app.HistoryEditField.Position = [128 398 121 26];
+
+            % Create SaveoperationtohistoryButton
+            app.SaveoperationtohistoryButton = uibutton(app.UIFigure, 'push');
+            app.SaveoperationtohistoryButton.ButtonPushedFcn = createCallbackFcn(app, @SaveoperationtohistoryButtonPushed, true);
+            app.SaveoperationtohistoryButton.FontSize = 18;
+            app.SaveoperationtohistoryButton.Position = [22 308 141 53];
+            app.SaveoperationtohistoryButton.Text = {'Save operation '; 'to history'};
+
+            % Show the figure after all components are created
+            app.UIFigure.Visible = 'on';
+        end
+    end
+
+    % App creation and deletion
+    methods (Access = public)
+
+        % Construct app
+        function app = Ziyaev_Abdullojon_EE101_TeamProject2
+
+            % Create UIFigure and components
+            createComponents(app)
+
+            % Register the app with App Designer
+            registerApp(app, app.UIFigure)
+
+            if nargout == 0
+                clear app
+            end
+        end
+
+        % Code that executes before app deletion
+        function delete(app)
+
+            % Delete UIFigure when app is deleted
+            delete(app.UIFigure)
+        end
+    end
+end
